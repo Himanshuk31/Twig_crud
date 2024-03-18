@@ -1,6 +1,8 @@
 <?php
 
 namespace Config;
+use PDO;
+use PDOException;
 
 class Connection
 {
@@ -14,7 +16,7 @@ class Connection
         $username = 'root';
         $password = '';
 
-        $conn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
+        $conn = "mysql:host=$host;dbname=$dbname";
 
         try {
             $this->pdo = new PDO($conn, $username, $password);
