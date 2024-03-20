@@ -2,8 +2,6 @@
 namespace Config;
 use PDO;
 use PDOException;
-
-
 class Connection {
     private static $instance = null;
     private $pdo;

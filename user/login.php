@@ -1,9 +1,12 @@
 <?php
+session_start();
+
 require_once '../vendor/autoload.php'; 
 
 use Config\Connection; 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
+
 $pdo = Connection::getInstance()->getConnection();
 
 $loader = new FilesystemLoader('../template');
@@ -18,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $stmt->fetch();
 
     if ($user) {
+        $_SESSION['user'] = $user;
         header("Location: details.php?id={$user['id']}");
         exit();
     } else {
