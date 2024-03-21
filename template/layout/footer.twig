@@ -5,22 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Management System</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
         footer {
             position: fixed;
             bottom: 0;
             width: 100%;
             text-align: center;
-            padding: 10px ;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+        }
+        footer img {
+            width: 50px;
+            height: auto;
+            filter: brightness(0) invert(1); /* invert the color to white */
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer ul li {
+            display: inline;
+            margin-left: 10px;
+        }
+        footer ul li a {
+            color: #fff; /* Change the color of links to white */
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <footer>
         <p><b><u>Thank you for Logging In</u></b></p>
-        <ul>
-            <li><a href="login.php">Go to login</a></li>
-            <li><a href="logout.php">Logout</a></li>
-        </ul>
+        <ul><u>
+            {# <li><a href="login.php">Go to login</a></li> #}
+            <li><a href="logout.php" style="color: #fff;">Logout</a></li> <!-- Set color to white -->
+        </u></ul>
     </footer>
 </body>
 </html>

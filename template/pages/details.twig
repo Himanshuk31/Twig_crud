@@ -1,12 +1,13 @@
-
-
 {% include 'layout/header.twig' %}
 
-<h1>User Details</h1>
-<p>Name: {{ user.name }}</p>
-<p>Password: {{ user.password }}</p>
-<p>Phone: {{ user.phone_number }}</p>
+<div style="margin-left: 50px;">
+    <h1>User Details</h1>
+    <p>Name: {{ user.name }}</p>
+    <p>Password: {{ user.password }}</p>
+    <p>Phone: {{ user.phone_number }}</p>
 
-<a href="edit.php?id={{ user.id }}">Edit</a> | <a href="delete.php?id={{ user.id }}">Delete</a>
+    <a href="edit.php?id={{ user.id }}">Edit</a> | 
+    <a href="delete.php?id={{ user.id }}">Delete</a>
+</div>
 
 {% include 'layout/footer.twig' %}

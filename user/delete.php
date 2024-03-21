@@ -12,6 +12,6 @@ $stmt->execute(['id' => $dataId]);
     alert("User deleted successfully");
 
     setTimeout(function() {
-        window.location.href = 'login.php';
-    }, 2000); 
+        window.location.href = 'details.php';
+    }, 1000); 
 </script>

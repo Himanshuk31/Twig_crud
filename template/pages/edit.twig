@@ -1,5 +1,7 @@
 {% include 'layout/header.twig' %}
 
+<div style="margin-left: 50px;">
+
 <h1>Edit User Details</h1>
 <form method="post" autocomplete="off">
     <input type="hidden" name="id" value="{{ user.id }}">
@@ -17,5 +19,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Update</button>
 </form>
+</div>
 
 {% include 'layout/footer.twig' %}
