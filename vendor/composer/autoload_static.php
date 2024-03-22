@@ -22,6 +22,11 @@ class ComposerStaticInit6a6772df2521c6860a448e9115f2793a
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Services\\' => 9,
+        ),
+        'R' => 
+        array (
+            'Repository\\' => 11,
         ),
         'C' => 
         array (
@@ -45,6 +50,14 @@ class ComposerStaticInit6a6772df2521c6860a448e9115f2793a
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Services\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/services',
+        ),
+        'Repository\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/repository',
         ),
         'Config\\' => 
         array (

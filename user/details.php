@@ -1,24 +1,29 @@
 <?php
+
 require_once '../vendor/autoload.php'; 
 
-use Config\Connection; 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use Services\UserService;
+use Repository\Repository; // Corrected class import
 
 
-$pdo = Connection::getInstance()->getConnection();
+// Ensure Repository class is included
+if (!class_exists('Repository\Repository')) {
+    die("Repository class not found or included.");
+}
+
 $loader = new FilesystemLoader('../template');
 $twig = new Environment($loader);
 
 session_start();
 
 if(isset($_GET['id'])) {
-    $userService = new UserService();
-    $user = $userService->getUserById($_GET['id']);
+    // Assuming Composer autoloader is correctly configured and generated
+    $repo = new Repository();
+    $user = $repo->getUserById($_GET['id']);
     
     echo $twig->render('pages/details.twig', ['user' => $user]);
 } else {
-    echo "User ID not provided.";
+    echo "User Deleted succesfully";
 }
 ?>

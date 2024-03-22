@@ -1,7 +1,8 @@
 <?php
 namespace Config;
+
 use PDO;
-use PDOException;
+
 class Connection {
     private static $instance = null;
     private $pdo;
@@ -12,8 +13,8 @@ class Connection {
         $password = "";
         $dbname = "user";
 
-        $this->pdo = new \PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-        $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $this->pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     public static function getInstance() {

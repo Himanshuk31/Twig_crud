@@ -1,14 +1,13 @@
 <?php
-require_once '../vendor/autoload.php'; 
-use Config\Connection; 
-use Services\UserService;
 
-$pdo = Connection::getInstance()->getConnection();
-$userService = new UserService();
+require_once '../vendor/autoload.php'; 
+use Repository\Repository;
+
+$repo = new Repository();
 
 if(isset($_GET['id'])) {
     $dataId = $_GET['id'];
-    $userService->deleteUser($dataId);
+    $repo->deleteUser($dataId);
 }
 
 ?>

@@ -1,24 +1,49 @@
 {% include 'layout/header.twig' %}
 
 <div style="margin-left: 50px;">
-
-<h1>Edit User Details</h1>
-<form method="post" autocomplete="off">
-    <input type="hidden" name="id" value="{{ user.id }}">
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" class="form-control" value="{{ user.name }}" required>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="text" name="password" id="password" class="form-control" value="{{ user.password }}" required>
-    </div>
-    <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="text" name="phone" id="phone" class="form-control" value="{{ user.phone_number }}" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Update</button>
-</form>
+    <h1>Edit User Details</h1>
+    <form id="editForm" method="post" autocomplete="off">
+        <input type="hidden" name="id" value="{{ user.id }}">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control" value="{{ user.name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" name="password" id="password" class="form-control" value="{{ user.password }}" required>
+        </div>
+        <div class="form-group">
+            <label for="phone_number">Phone Number</label>
+            <input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ user.phone_number }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
 </div>
 
 {% include 'layout/footer.twig' %}
+
+<script>
+    $(document).ready(function() {
+        $("#editForm").validate({
+            rules: {
+                name: "required",
+                password: "required",
+                phone_number: {
+                    required: true,
+                    digits: true 
+                }
+            },
+            messages: {
+                name: "Please enter your name",
+                password: "Please enter your password",
+                phone_number: {
+                    required: "Please enter your phone number",
+                    digits: "Please enter only digits"
+                }
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    });
+</script>
