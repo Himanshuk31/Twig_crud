@@ -1,3 +1,5 @@
+// user/edit.php
+
 <?php
 session_start();
 
@@ -5,6 +7,7 @@ require_once '../vendor/autoload.php';
 use Config\Connection; 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
+use Services\UserService;
 
 if (!isset($_SESSION['user'])) {
     header("Location: login.php");
@@ -15,22 +18,21 @@ $pdo = Connection::getInstance()->getConnection();
 $loader = new FilesystemLoader('../template');
 $twig = new Environment($loader);
 
+$userService = new UserService();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
     $name = $_POST['name'];
     $password = $_POST['password'];
-    $phone = $_POST['phone'];
+    $phone_number = $_POST['phone_number'];
 
-    $stmt = $pdo->prepare("UPDATE data SET name = :name, password = :password, phone_number = :phone WHERE id = :id");
-    $stmt->execute(['name' => $name, 'password' => $password, 'phone' => $phone, 'id' => $id]);
+    $userService->updateUser($id, $name, $password, $phone_number);
 
     header("Location: details.php?id=$id");
     exit();
 } else {
     $id = $_GET['id'];
-    $stmt = $pdo->prepare("SELECT * FROM data WHERE id = :id");
-    $stmt->execute(['id' => $id]);
-    $user = $stmt->fetch();
+    $user = $userService->getUserById($id);
 
     echo $twig->render('pages/edit.twig', ['user' => $user]);
 }

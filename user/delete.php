@@ -1,11 +1,15 @@
 <?php
 require_once '../vendor/autoload.php'; 
 use Config\Connection; 
+use Services\UserService;
 
 $pdo = Connection::getInstance()->getConnection();
-$dataId = $_GET['id'];
-$stmt = $pdo->prepare("DELETE FROM data WHERE id = :id");
-$stmt->execute(['id' => $dataId]);
+$userService = new UserService();
+
+if(isset($_GET['id'])) {
+    $dataId = $_GET['id'];
+    $userService->deleteUser($dataId);
+}
 
 ?>
 <script>
